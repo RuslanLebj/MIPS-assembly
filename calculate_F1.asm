@@ -95,12 +95,12 @@ case_c_lt_zero:
     
     jal calc_case1    # Вызов: F = a * x^2 + b^2 * x
     j print_result
-
+    
 case_c_gt_zero:
     c.eq.d $f4, $f30  # Проверяем b == 0
-    bc1f error        # Ошибка, если b != 0
+    bc1f case_other    # Если b != 0, переходим в "остальные случаи"
     
-    jal calc_case2    # Вызов: F = (x + a) / (x + c)
+    jal calc_case2     # Вызываем расчет F = (x + a) / (x + c)
     j print_result
 
 case_other:
